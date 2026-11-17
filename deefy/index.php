@@ -26,7 +26,7 @@ $router = new Router();
 $router->addRoute('default', \iutnc\deefy\action\DefaultAction::class);
 $router->addRoute('mes-playlists', \iutnc\deefy\action\DisplayAllPlaylistsAction::class);
 $router->addRoute('afficher-playlist', \iutnc\deefy\action\DisplayPlaylistAction::class);
-$router->addRoute('playlist-courante', \iutnc\deefy\action\DisplayCurrentPlaylistAction::class
+$router->addRoute('playlist-courante', \iutnc\deefy\action\DisplayCurrentPlaylistAction::class)
 $router->addRoute('ajouter-piste', \iutnc\deefy\action\AddTrackAction::class);
 $router->addRoute('creer-playlist', \iutnc\deefy\action\AddPlaylistAction::class);
 
