@@ -1,8 +1,8 @@
 <?php
 
-namespace iutnc\deefy\render;
+namespace deefy\render;
 
-use iutnc\deefy\audio\lists\Playlist;
+use deefy\audio\lists\Playlist;
 
 class PlaylistRenderer implements Renderer {
     protected Playlist $playlist;
