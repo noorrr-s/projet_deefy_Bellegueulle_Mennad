@@ -27,10 +27,10 @@ $router->addRoute('default', \iutnc\deefy\action\DefaultAction::class);
 $router->addRoute('mes-playlists', \iutnc\deefy\action\DisplayAllPlaylistsAction::class);
 $router->addRoute('afficher-playlist', \iutnc\deefy\action\DisplayPlaylistAction::class);
 $router->addRoute('playlist-courante', \iutnc\deefy\action\DisplayCurrentPlaylistAction::class);
+$router->addRoute('creer-playlist', \iutnc\deefy\action\AddPlaylistAction::class);
 
-// Les routes complémentaires seront ajoutées au fur et à mesure :
+// La route pour ajouter une piste sera activée pour la Personne A :
 // $router->addRoute('ajouter-piste', \iutnc\deefy\action\AddTrackAction::class);
-// $router->addRoute('creer-playlist', \iutnc\deefy\action\AddPlaylistAction::class);
 
 try {
     $content = $router->run();
