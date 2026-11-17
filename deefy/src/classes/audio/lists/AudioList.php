@@ -1,8 +1,8 @@
 <?php
 
-namespace iutnc\deefy\audio\lists;
+namespace deefy\audio\lists;
 
-use iutnc\deefy\exception\InvalidPropertyNameException;
+use deefy\exception\InvalidPropertyNameException;
 
 class AudioList {
     protected string $nom;
