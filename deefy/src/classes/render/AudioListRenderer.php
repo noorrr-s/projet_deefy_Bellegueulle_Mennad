@@ -1,10 +1,10 @@
 <?php
 
-namespace iutnc\deefy\render;
+namespace deefy\render;
 
-use iutnc\deefy\audio\lists\AudioList;
-use iutnc\deefy\audio\tracks\AlbumTrack;
-use iutnc\deefy\audio\tracks\PodcastTrack;
+use deefy\audio\lists\AudioList;
+use deefy\audio\tracks\AlbumTrack;
+use deefy\audio\tracks\PodcastTrack;
 
 class AudioListRenderer implements Renderer {
 

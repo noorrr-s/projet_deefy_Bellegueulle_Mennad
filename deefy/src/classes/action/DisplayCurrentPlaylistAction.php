@@ -1,9 +1,9 @@
 <?php
 
-namespace iutnc\deefy\action;
+namespace deefy\action;
 
-use iutnc\deefy\render\PlaylistRenderer;
-use iutnc\deefy\render\Renderer;
+use deefy\render\PlaylistRenderer;
+use deefy\render\Renderer;
 
 class DisplayCurrentPlaylistAction extends Action {
     public function execute(): string {
