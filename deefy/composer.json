@@ -1,0 +1,11 @@
+{
+    "name": "iut/deefy",
+    "description": "Mini-projet Deefy - BUT Informatique S3 R3.01",
+    "type": "project",
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "deefy\\": "src/classes/"
+        }
+    }
+}
