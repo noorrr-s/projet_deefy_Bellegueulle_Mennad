@@ -26,23 +26,20 @@ $router = new Router();
 $router->addRoute('default', \iutnc\deefy\action\DefaultAction::class);
 $router->addRoute('mes-playlists', \iutnc\deefy\action\DisplayAllPlaylistsAction::class);
 $router->addRoute('afficher-playlist', \iutnc\deefy\action\DisplayPlaylistAction::class);
-$router->addRoute('playlist-courante', \iutnc\deefy\action\DisplayCurrentPlaylistAction::class);
-
-// Les routes complémentaires seront ajoutées au fur et à mesure :
-// $router->addRoute('ajouter-piste', \iutnc\deefy\action\AddTrackAction::class);
-// $router->addRoute('creer-playlist', \iutnc\deefy\action\AddPlaylistAction::class);
+$router->addRoute('playlist-courante', \iutnc\deefy\action\DisplayCurrentPlaylistAction::class
+$router->addRoute('ajouter-piste', \iutnc\deefy\action\AddTrackAction::class);
+$router->addRoute('creer-playlist', \iutnc\deefy\action\AddPlaylistAction::class);
 
 try {
     $content = $router->run();
 } catch (RouterException $e) {
     http_response_code(404);
-    $content = "<div class='error-message'><strong>404 Non trouvé :</strong> " . htmlspecialchars($e->getMessage()) . "</div>";
+    $content = "<article class='error'><strong>404 Non trouvé :</strong> " . htmlspecialchars($e->getMessage()) . "</article>";
 } catch (\Exception $e) {
     http_response_code(500);
-    $content = "<div class='error-message'><strong>Erreur :</strong> " . htmlspecialchars($e->getMessage()) . "</div>";
+    $content = "<article class='error'><strong>Erreur :</strong> " . htmlspecialchars($e->getMessage()) . "</article>";
 }
 
-// Structure HTML5 valide (W3C) avec mise en page
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -50,6 +47,8 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deefy - Gestionnaire de Playlists</title>
+    <!-- Intégration de Pico.css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 20px; background: #f8fafc; color: #1e293b; }
         header { background: #0f172a; color: white; padding: 15px 25px; border-radius: 8px; margin-bottom: 20px; }
@@ -73,24 +72,25 @@ try {
     </style>
 </head>
 <body>
-    <header>
-        <h1>Deefy Music</h1>
-        <nav>
-            <ul>
-                <li><a href="?action=default">Accueil</a></li>
-                <li><a href="?action=mes-playlists">Mes Playlists</a></li>
-                <li><a href="?action=creer-playlist">Créer une playlist</a></li>
-                <li><a href="?action=playlist-courante">Playlist courante</a></li>
-            </ul>
-        </nav>
-    </header>
+<header class="container">
+    <nav>
+        <ul>
+            <li><strong>Deefy Music</strong></li>
+        </ul>
+        <ul>
+            <li><a href="?action=default">Accueil</a></li>
+            <li><a href="?action=playlist-courante">Playlist courante</a></li>
+            <li><a href="?action=ajouter-piste" role="button" class="outline">Ajouter une piste</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <main>
-        <?= $content ?>
-    </main>
+<main class="container">
+    <?= $content ?>
+</main>
 
-    <footer>
-        <p>&copy; <?= date('Y') ?> Deefy - IUT Nancy-Charlemagne - BUT Informatique S3</p>
-    </footer>
+<footer class="container" style="text-align: center; font-size: 0.85rem; color: #707a8a; margin-top: 3rem;">
+    <p>&copy; <?= date('Y') ?> Deefy - IUT Nancy-Charlemagne - BUT Informatique S3</p>
+</footer>
 </body>
 </html>
