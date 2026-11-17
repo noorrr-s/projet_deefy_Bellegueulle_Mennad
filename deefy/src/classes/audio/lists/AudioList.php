@@ -1,0 +1,29 @@
+<?php
+
+namespace iutnc\deefy\audio\lists;
+
+use iutnc\deefy\exception\InvalidPropertyNameException;
+
+class AudioList {
+    protected string $nom;
+    protected int $nb_pistes;
+    protected int $duree_totale;
+    protected array $pistes;
+
+    public function __construct(string $nom, array $pistes = []) {
+        $this->nom = $nom;
+        $this->pistes = $pistes;
+        $this->nb_pistes = count($pistes);
+        $this->duree_totale = 0;
+        foreach ($pistes as $piste) {
+            $this->duree_totale += $piste->duree;
+        }
+    }
+
+    public function __get(string $name) {
+        if (property_exists($this, $name)) {
+            return $this->$name;
+        }
+        throw new InvalidPropertyNameException("invalid property : {$name}");
+    }
+}
