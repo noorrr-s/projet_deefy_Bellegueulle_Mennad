@@ -1,49 +1,35 @@
 # Mini-Projet Deefy (R3.01 - Développement Web S3)
 
 **IUT Nancy-Charlemagne - BUT Informatique S3**  
-*Binôme : [Étudiant 1] & [Étudiant 2]*
+*Binôme : Bellegueulle & Mennad*
 
 ---
 
 ## 📋 Tableau de bord des fonctionnalités
 
-Conformément au sujet du projet, voici le suivi de réalisation :
+Conformément au sujet du projet, voici l'état d'avancement des fonctionnalités :
 
-| N° | Fonctionnalité | Rôle principal | Statut |
+| N° | Fonctionnalité | Auteur | Statut |
 |:---|:---|:---:|:---:|
-| **1** | **Mes playlists** : Affiche la liste des playlists enregistrées en BD | Personne B | ⏳ En attente |
-| **2** | **Sélection de playlist** : Cliquable, affichage complet et devient courante en session | Personne B / A | ⏳ En attente |
-| **3** | **Ajouter une piste** : Formulaire pour ajouter une piste à la playlist courante | Personne A | ⏳ En attente |
-| **4** | **Créer une playlist vide** : Formulaire de création, insertion BD et mise en session | Personne B | ⏳ En attente |
-| **5** | **Afficher la playlist courante** : Affiche la playlist stockée en session | Personne A | ⏳ En attente |
+| **1** | **Mes playlists** : Affiche la liste des playlists enregistrées en BD | Personne B | ✅ Réalisé (`DisplayAllPlaylistsAction`) |
+| **2** | **Sélection de playlist** : Cliquable, affichage complet et devient courante en session | Personne B | ✅ Réalisé (`DisplayPlaylistAction`) |
+| **3** | **Ajouter une piste** : Formulaire pour ajouter une piste à la playlist courante | Personne A | ⏳ À faire (`AddTrackAction`) |
+| **4** | **Créer une playlist vide** : Formulaire de création, insertion BD et mise en session | Personne B | ⏳ À faire (`AddPlaylistAction`) |
+| **5** | **Afficher la playlist courante** : Affiche la playlist stockée en session | Personne A | ✅ Réalisé (`DisplayCurrentPlaylistAction`) |
 | **6** | *(Optionnel)* **S'inscrire** : Création d'un compte avec mot de passe haché | Binôme | ⏳ Optionnel |
 | **7** | *(Optionnel)* **S'authentifier** : Connexion utilisateur avec session | Binôme | ⏳ Optionnel |
 
 ---
 
-## 🛠️ Installation et configuration locale
+## 🛠️ Installation et configuration locale (XAMPP)
 
-1. **Génération de l'autoloader Composer** :
-   ```bash
-   composer dump-autoload
-   ```
-2. **Initialisation de la base de données** :
-   * Exécuter le script SQL dans votre serveur MySQL / MariaDB :
-     ```bash
-     mysql -u root -p < sql/deefy.sql
-     ```
-3. **Configuration de la connexion BD** :
-   * Copier le modèle `config/config.db.ini.dist` vers `config/config.db.ini` :
-     ```bash
-     cp config/config.db.ini.dist config/config.db.ini
-     ```
-   * Renseigner vos identifiants réels (ce fichier est ignoré par Git).
+1. **Chemin du projet** :
+   * Placé sous `C:\xampp\htdocs\Sae\projet_deefy_Bellegueulle_Mennad\deefy`
+   * URL locale : [http://localhost/Sae/projet_deefy_Bellegueulle_Mennad/deefy/](http://localhost/Sae/projet_deefy_Bellegueulle_Mennad/deefy/)
 
-4. **Lancement du serveur de développement local** :
-   ```bash
-   php -S localhost:8000
-   ```
-   Rendez-vous sur [http://localhost:8000](http://localhost:8000).
+2. **Base de données** :
+   * Importer `sql/deefy.sql` dans MySQL (via phpMyAdmin ou console MySQL).
+   * Copier `config/config.db.ini.dist` vers `config/config.db.ini` et renseigner vos identifiants MySQL.
 
 ---
 
@@ -58,6 +44,5 @@ Conformément au sujet du projet, voici le suivi de réalisation :
 ## 🚀 Déploiement sur le serveur `webetu`
 
 1. Déposer les fichiers dans votre dossier public sur `webetu.iutnc.univ-lorraine.fr`.
-2. Importer `sql/deefy.sql` sur la base de données de l'IUT (via phpMyAdmin ou terminal).
-3. Créer le fichier `config/config.db.ini` sur `webetu` avec vos identifiants MySQL universitaires.
-4. S'assurer que le dossier `vendor/` est généré ou transféré avec les droits de lecture adéquats.
+2. Importer `sql/deefy.sql` sur votre base de données IUT.
+3. Créer `config/config.db.ini` sur `webetu` avec les identifiants IUT.

@@ -6,10 +6,10 @@ session_start();
 // Chargement automatique des classes via Composer (Cours 7)
 require_once __DIR__ . '/vendor/autoload.php';
 
-use deefy\dispatch\Router;
-use deefy\repository\DeefyRepository;
-use deefy\exception\RouterException;
-use deefy\exception\DatabaseException;
+use iutnc\deefy\dispatch\Router;
+use iutnc\deefy\repository\DeefyRepository;
+use iutnc\deefy\exception\RouterException;
+use iutnc\deefy\exception\DatabaseException;
 
 // Initialisation de la configuration base de données si le fichier ini existe (Cours 13)
 $configFile = __DIR__ . '/config/config.db.ini';
@@ -17,21 +17,20 @@ if (file_exists($configFile)) {
     try {
         DeefyRepository::setConfig($configFile);
     } catch (DatabaseException $e) {
-        // En cas d'erreur sur le fichier ini
         error_log($e->getMessage());
     }
 }
 
 // Configuration du Routeur (Cours 11)
 $router = new Router();
-$router->addRoute('default', \deefy\action\DefaultAction::class);
+$router->addRoute('default', \iutnc\deefy\action\DefaultAction::class);
+$router->addRoute('mes-playlists', \iutnc\deefy\action\DisplayAllPlaylistsAction::class);
+$router->addRoute('afficher-playlist', \iutnc\deefy\action\DisplayPlaylistAction::class);
+$router->addRoute('playlist-courante', \iutnc\deefy\action\DisplayCurrentPlaylistAction::class);
 
-// Les routes des fonctionnalités seront ajoutées ici au fur et à mesure :
-// $router->addRoute('mes-playlists', \deefy\action\DisplayAllPlaylistsAction::class);
-// $router->addRoute('afficher-playlist', \deefy\action\DisplayPlaylistAction::class);
-// $router->addRoute('ajouter-piste', \deefy\action\AddTrackAction::class);
-// $router->addRoute('creer-playlist', \deefy\action\AddPlaylistAction::class);
-// $router->addRoute('playlist-courante', \deefy\action\DisplayCurrentPlaylistAction::class);
+// Les routes complémentaires seront ajoutées au fur et à mesure :
+// $router->addRoute('ajouter-piste', \iutnc\deefy\action\AddTrackAction::class);
+// $router->addRoute('creer-playlist', \iutnc\deefy\action\AddPlaylistAction::class);
 
 try {
     $content = $router->run();
@@ -43,7 +42,7 @@ try {
     $content = "<div class='error-message'><strong>Erreur :</strong> " . htmlspecialchars($e->getMessage()) . "</div>";
 }
 
-// Structure HTML5 valide (W3C) avec mise en page de base
+// Structure HTML5 valide (W3C) avec mise en page
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -60,6 +59,16 @@ try {
         nav a:hover { text-decoration: underline; }
         main { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
         .error-message { background: #fee2e2; color: #991b1b; padding: 15px; border-radius: 6px; border: 1px solid #f87171; }
+        .btn { display: inline-block; background: #2563eb; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: 500; }
+        .btn:hover { background: #1d4ed8; }
+        .btn-secondary { background: #64748b; }
+        .btn-secondary:hover { background: #475569; }
+        .playlists-list { list-style: none; padding: 0; }
+        .playlists-list li { margin: 10px 0; padding: 12px; background: #f1f5f9; border-radius: 6px; }
+        .playlists-list a { text-decoration: none; color: #0f172a; font-weight: 600; font-size: 1.1rem; }
+        .playlists-list a:hover { color: #2563eb; }
+        .track-list { list-style: none; padding: 0; }
+        .track-list li { padding: 10px; margin-bottom: 8px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; }
         footer { margin-top: 30px; text-align: center; font-size: 0.85rem; color: #64748b; }
     </style>
 </head>
