@@ -5,6 +5,7 @@ namespace deefy\audio\lists;
 use deefy\exception\InvalidPropertyNameException;
 
 class AudioList {
+    protected ?int $id = null;
     protected string $nom;
     protected int $nb_pistes;
     protected int $duree_totale;
@@ -18,6 +19,10 @@ class AudioList {
         foreach ($pistes as $piste) {
             $this->duree_totale += $piste->duree;
         }
+    }
+
+    public function setId(int $id): void {
+        $this->id = $id;
     }
 
     public function __get(string $name) {

@@ -6,6 +6,7 @@ use deefy\exception\InvalidPropertyNameException;
 use deefy\exception\InvalidPropertyValueException;
 
 class AudioTrack {
+    protected ?int $id = null;
     protected string $titre;
     protected string $nom_fichier;
     protected int $duree = 0;
@@ -14,6 +15,10 @@ class AudioTrack {
     public function __construct(string $titre, string $nom_fichier) {
         $this->titre = $titre;
         $this->nom_fichier = $nom_fichier;
+    }
+
+    public function setId(int $id): void {
+        $this->id = $id;
     }
 
     public function __get(string $name) {

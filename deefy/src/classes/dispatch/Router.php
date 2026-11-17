@@ -1,8 +1,8 @@
 <?php
 
-namespace deefy\dispatch;
+namespace iutnc\deefy\dispatch;
 
-use deefy\exception\RouterException;
+use iutnc\deefy\exception\RouterException;
 
 class Router {
 
@@ -14,7 +14,7 @@ class Router {
     }
 
     /**
-     * Enregistre un couple (nom d'action, classe Action)
+     * Enregistre un couple (nom d'action, nom de classe Action)
      */
     public function addRoute(string $action, string $action_class): self {
         $this->actions[$action] = $action_class;

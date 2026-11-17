@@ -1,5 +1,5 @@
 <?php
 
-namespace deefy\exception;
+namespace iutnc\deefy\exception;
 
 class ActionException extends \Exception {}

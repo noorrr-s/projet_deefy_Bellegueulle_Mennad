@@ -1,5 +1,5 @@
 <?php
 
-namespace deefy\exception;
+namespace iutnc\deefy\exception;
 
 class DatabaseException extends \Exception {}
