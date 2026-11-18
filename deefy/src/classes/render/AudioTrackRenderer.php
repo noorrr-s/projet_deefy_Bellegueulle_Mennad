@@ -1,9 +1,9 @@
 <?php
 
-namespace deefy\render;
+namespace iutnc\deefy\render;
 
-use deefy\audio\tracks\AudioTrack;
-use deefy\audio\tracks\AlbumTrack;
+use iutnc\deefy\audio\tracks\AudioTrack;
+use iutnc\deefy\audio\tracks\AlbumTrack;
 
 class AudioTrackRenderer implements Renderer {
     protected AudioTrack $track;

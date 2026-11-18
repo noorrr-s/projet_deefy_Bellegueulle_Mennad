@@ -21,7 +21,7 @@ class DisplayAllPlaylistsAction extends Action {
             foreach ($playlists as $pl) {
                 $nom = htmlspecialchars($pl->nom);
                 $id = (int)$pl->id;
-                $html .= "<li><a href=\"?action=afficher-playlist&id={$id}\">🎵 {$nom}</a></li>";
+                $html .= "<li><a href=\"?action=afficher-playlist&id={$id}\">{$nom}</a></li>";
             }
             $html .= "</ul>";
         }

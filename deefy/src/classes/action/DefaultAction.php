@@ -7,7 +7,7 @@ class DefaultAction extends Action {
     public function execute(): string {
         $html = <<<HTML
         <div class="welcome-box">
-            <h2>Bienvenue sur Deefy 🎵</h2>
+            <h2>Bienvenue sur Deefy</h2>
             <p>Sélectionnez une option dans le menu ci-dessus pour naviguer dans l'application :</p>
             <ul>
                 <li><a href="?action=mes-playlists">Consulter mes playlists</a></li>

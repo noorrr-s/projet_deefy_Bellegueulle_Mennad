@@ -1,6 +1,6 @@
 <?php
 
-namespace deefy\render;
+namespace iutnc\deefy\render;
 
 interface Renderer {
     const COMPACT = 1;

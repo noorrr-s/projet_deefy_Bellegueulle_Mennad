@@ -1,18 +1,28 @@
 <?php
 
-// Démarrage systématique de la session (Cours 10)
+// 1. Chargement automatique des classes via Composer (Cours 7)
+// DOIT être placé AVANT session_start() pour permettre la désérialisation des objets (Cours 10)
+require_once __DIR__ . '/vendor/autoload.php';
+
+// 2. Démarrage de la session
 session_start();
 
-// Chargement automatique des classes via Composer (Cours 7)
-require_once __DIR__ . '/vendor/autoload.php';
+// Nettoyage de sécurité si un objet incomplet avait été mis en session
+if (isset($_SESSION['current_playlist']) && $_SESSION['current_playlist'] instanceof \__PHP_Incomplete_Class) {
+    unset($_SESSION['current_playlist']);
+}
 
 use iutnc\deefy\dispatch\Router;
 use iutnc\deefy\repository\DeefyRepository;
 use iutnc\deefy\exception\RouterException;
 use iutnc\deefy\exception\DatabaseException;
 
-// Initialisation de la configuration base de données si le fichier ini existe (Cours 13)
+// Initialisation de la configuration base de données (Cours 13)
 $configFile = __DIR__ . '/config/config.db.ini';
+if (!file_exists($configFile)) {
+    $configFile = __DIR__ . '/config/config.db.ini.dist';
+}
+
 if (file_exists($configFile)) {
     try {
         DeefyRepository::setConfig($configFile);
@@ -26,9 +36,13 @@ $router = new Router();
 $router->addRoute('default', \iutnc\deefy\action\DefaultAction::class);
 $router->addRoute('mes-playlists', \iutnc\deefy\action\DisplayAllPlaylistsAction::class);
 $router->addRoute('afficher-playlist', \iutnc\deefy\action\DisplayPlaylistAction::class);
-$router->addRoute('playlist-courante', \iutnc\deefy\action\DisplayCurrentPlaylistAction::class)
+$router->addRoute('playlist-courante', \iutnc\deefy\action\DisplayCurrentPlaylistAction::class);
 $router->addRoute('ajouter-piste', \iutnc\deefy\action\AddTrackAction::class);
 $router->addRoute('creer-playlist', \iutnc\deefy\action\AddPlaylistAction::class);
+
+// Alias pour compatibilité
+$router->addRoute('add-track', \iutnc\deefy\action\AddTrackAction::class);
+$router->addRoute('display-current-playlist', \iutnc\deefy\action\DisplayCurrentPlaylistAction::class);
 
 try {
     $content = $router->run();
@@ -79,6 +93,8 @@ try {
         </ul>
         <ul>
             <li><a href="?action=default">Accueil</a></li>
+            <li><a href="?action=mes-playlists">Mes Playlists</a></li>
+            <li><a href="?action=creer-playlist">Créer une playlist</a></li>
             <li><a href="?action=playlist-courante">Playlist courante</a></li>
             <li><a href="?action=ajouter-piste" role="button" class="outline">Ajouter une piste</a></li>
         </ul>

@@ -1,21 +1,30 @@
 <?php
 
-namespace deefy\action;
+namespace iutnc\deefy\action;
 
-use deefy\render\PlaylistRenderer;
-use deefy\render\Renderer;
+use iutnc\deefy\render\PlaylistRenderer;
+use iutnc\deefy\render\Renderer;
 
 class DisplayCurrentPlaylistAction extends Action {
+
     public function execute(): string {
-        // Vérifie si une playlist courante est stockée en session
-        if (!isset($_SESSION['current_playlist'])) {
-            return "<p>Aucune playlist courante sélectionnée.</p>";
+        // Vérifie si une playlist courante valide est stockée en session
+        if (!isset($_SESSION['current_playlist']) || !($_SESSION['current_playlist'] instanceof \iutnc\deefy\audio\lists\Playlist)) {
+            return "<div class=\"info-box\"><p>Aucune playlist courante sélectionnée pour le moment.</p><p><a href=\"?action=mes-playlists\" class=\"btn\">Choisir une playlist</a> ou <a href=\"?action=creer-playlist\" class=\"btn btn-secondary\">En créer une</a></p></div>";
         }
 
         $playlist = $_SESSION['current_playlist'];
 
-        //affichage format long
+        // Affichage au format long
         $renderer = new PlaylistRenderer($playlist);
-        return $renderer->render(Renderer::LONG);
+        $html = $renderer->render(Renderer::LONG);
+
+        // Actions associées
+        $html .= "<div class=\"playlist-actions\" style=\"margin-top: 20px;\">";
+        $html .= "<a href=\"?action=ajouter-piste\" class=\"btn\">Ajouter une piste à cette playlist</a> ";
+        $html .= "<a href=\"?action=mes-playlists\" class=\"btn btn-secondary\">Retour à la liste</a>";
+        $html .= "</div>";
+
+        return $html;
     }
 }

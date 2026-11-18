@@ -28,8 +28,8 @@ class DisplayPlaylistAction extends Action {
 
             // Lien direct pour ajouter une piste (Fonctionnalité 3)
             $html .= "<div class=\"playlist-actions\" style=\"margin-top: 20px;\">";
-            $html .= "<a href=\"?action=ajouter-piste\" class=\"btn\">➕ Ajouter une piste à cette playlist</a> ";
-            $html .= "<a href=\"?action=mes-playlists\" class=\"btn btn-secondary\">⬅ Retour à la liste</a>";
+            $html .= "<a href=\"?action=ajouter-piste\" class=\"btn\">Ajouter une piste à cette playlist</a> ";
+            $html .= "<a href=\"?action=mes-playlists\" class=\"btn btn-secondary\">Retour à la liste</a>";
             $html .= "</div>";
 
             return $html;

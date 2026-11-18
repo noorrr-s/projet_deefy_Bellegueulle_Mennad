@@ -69,11 +69,11 @@ HTML;
 
             $html = <<<HTML
             <div class="success-message" style="background: #dcfce7; color: #166534; padding: 20px; border-radius: 8px; border: 1px solid #86efac;">
-                <h3 style="margin-top: 0;">🎉 Playlist créée avec succès !</h3>
+                <h3 style="margin-top: 0;">Playlist créée avec succès !</h3>
                 <p>La playlist <strong>{$nomAffiche}</strong> a bien été enregistrée et définie comme votre playlist courante.</p>
                 <div style="margin-top: 15px;">
                     <a href="?action=afficher-playlist&id={$id}" class="btn">Afficher cette playlist</a>
-                    <a href="?action=ajouter-piste" class="btn" style="background: #059669; margin-left: 10px;">➕ Ajouter une piste</a>
+                    <a href="?action=ajouter-piste" class="btn" style="background: #059669; margin-left: 10px;">Ajouter une piste</a>
                     <a href="?action=mes-playlists" class="btn btn-secondary" style="margin-left: 10px;">Toutes les playlists</a>
                 </div>
             </div>

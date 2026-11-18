@@ -1,6 +1,6 @@
 <?php
 
-namespace deefy\audio\tracks;
+namespace iutnc\deefy\audio\tracks;
 
 class AlbumTrack extends AudioTrack {
     protected string $artiste = '';
