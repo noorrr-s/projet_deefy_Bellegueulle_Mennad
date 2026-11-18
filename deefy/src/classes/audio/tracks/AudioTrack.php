@@ -1,9 +1,9 @@
 <?php
 
-namespace deefy\audio\tracks;
+namespace iutnc\deefy\audio\tracks;
 
-use deefy\exception\InvalidPropertyNameException;
-use deefy\exception\InvalidPropertyValueException;
+use iutnc\deefy\exception\InvalidPropertyNameException;
+use iutnc\deefy\exception\InvalidPropertyValueException;
 
 class AudioTrack {
     protected ?int $id = null;
