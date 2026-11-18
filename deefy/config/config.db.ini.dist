@@ -1,8 +1,5 @@
-; Configuration de la base de données pour Deefy
-; Remplacer avec vos identifiants réels et sauvegarder sous "config.db.ini"
-
 driver=mysql
 host=localhost
-database=deefy
-username=root
-password=
+database=e80786u
+username=e80786u
+password=YkYiJnS_2007
